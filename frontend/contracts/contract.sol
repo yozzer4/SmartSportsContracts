@@ -51,10 +51,8 @@ contract SportsContract {
     }
     
     function payBaseSalary() external onlyOrganization {
-        require(block.timestamp >= contractStart + 30 days, "Base salary not due yet");
         require(address(this).balance >= baseSalary, "Insufficient funds to pay base salary");
         
-        contractStart = block.timestamp; // Reset the payment window
         player.transfer(baseSalary);
 
         emit SalaryPaid(player, baseSalary);
