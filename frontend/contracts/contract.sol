@@ -1,15 +1,28 @@
 // SPDX-License-Identifier: UNLICENSED 
 pragma solidity ^0.8.0;
 
+
+// The organization can deploy this contract and lock in funds
+// conditions determine how a player is paid
+// we can pay base salary and have bonuses determined by 
 contract SportsContract {
+    
+    // represents the address that deploys the contract and initially funds it
     address payable public organization;
+    // represents the address of the player that will receive payments
     address payable public player;
 
+    // base salary for player to be paid out
     uint256 public baseSalary;
+    // what day the contract started
     uint256 public contractStart;
+    // contract length in months
     uint256 public contractLengthMonths;
+    // tournaments required for bonus
     uint256 public tournamentsRequired;
+    // Bonus payout from tournaments attended
     uint256 public bonusPayout;
+    // represents the tournaments a player has participated in during the time
     uint256 public tournamentsParticipated;
 
     event SalaryPaid(address indexed player, uint256 amount);
@@ -57,6 +70,8 @@ contract SportsContract {
         emit BonusPaid(player, bonusPayout);
     }
 
+
+    // increment tournament 
     function recordTournamentParticipation() external onlyOrganization {
         tournamentsParticipated += 1;
     }
