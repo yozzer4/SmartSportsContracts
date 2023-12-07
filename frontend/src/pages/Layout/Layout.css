@@ -1,0 +1,16 @@
+.navbar {
+    font-size: large;
+    padding: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+    color: yellow;
+    border-bottom: 1px solid white;
+};
