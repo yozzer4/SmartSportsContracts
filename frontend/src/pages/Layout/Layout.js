@@ -1,6 +1,7 @@
 import './Layout.css';
 import { Outlet, Link } from "react-router-dom"
 import { AppBar, Toolbar, Typography } from '@mui/material';
+import React, {useState} from "react";
 
 function Layout() {
     return (
@@ -20,14 +21,17 @@ function Layout() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>>  */}
-            <AppBar position="static">
+            <AppBar sx={{ background: 'transparent', boxShadow: 'none', backdropFilter: 'blur(5px)' }} position="absolute">
                 <Toolbar>
-                    <Typography variant="h4">
+                    <Typography sx={{ marginRight: '500px' }}  variant="h4">
                         SmartSports
                     </Typography>
-                        <Link to="/" className='nav-link'>Home</Link>
-                        <Link to="/about" className='nav-link'>About</Link>
-                        <Link to="/login" className='nav-link'>Login</Link>
+                    <div className='link-container'>
+                        <Link to="/" className='nav-link'>HOME</Link>
+                        <Link to="about" className='nav-link'>ABOUT</Link>
+                        <Link to="contract" className='nav-link'>CREATE CONTRACT</Link>
+                    </div>
+                        
                 </Toolbar>
             </AppBar>
 

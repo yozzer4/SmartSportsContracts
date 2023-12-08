@@ -1,0 +1,10 @@
+.background{
+    height: 100vh;
+    background-size: cover;
+}
+
+.text-container{
+    padding-top: 30vh;
+    padding-right: 30vh;
+    text-align: right;
+}

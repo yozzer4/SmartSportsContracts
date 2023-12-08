@@ -1,8 +1,19 @@
+import { Typography } from '@mui/material';
 import './Home.css'
+import background from './background-image.jpg';
 
 function Home() {
     return (
-        <h1>Home</h1>
+        <div className='background' style={{ backgroundImage: `url(${background})` }}>
+            <div className='text-container'>
+                
+                <Typography variant='h1'>A better contract</Typography>
+                <Typography variant='h2'>For everyone.</Typography>
+
+            </div>
+        </div>
+
+
     );
 };
   

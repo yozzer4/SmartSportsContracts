@@ -1,6 +1,10 @@
-.navbar {
-    font-size: large;
-    padding: 20px;
+.title {
+    margin-left:20px;
+    margin-right: 100px;
+}
+
+.link-container {
+    text-align: right;
 }
 
 .nav-link {
