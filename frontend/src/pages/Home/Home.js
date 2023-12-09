@@ -7,7 +7,7 @@ function Home() {
         <div className='background' style={{ backgroundImage: `url(${background})` }}>
             <div className='text-container'>
                 
-                <Typography variant='h1'>A better contract</Typography>
+                <Typography variant='h1'>Better contracts.</Typography>
                 <Typography variant='h2'>For everyone.</Typography>
 
             </div>
