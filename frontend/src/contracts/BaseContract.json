@@ -1,63 +1,6 @@
 [
 	{
 		"inputs": [],
-		"name": "calculateSalary",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "fund",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_organizationAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address payable",
-				"name": "_playerAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_contractValue",
-				"type": "uint256"
-			}
-		],
-		"name": "initializeContract",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "payBaseSalary",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_contractValue",
-				"type": "uint256"
-			}
-		],
-		"name": "setContractValue",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -78,52 +21,6 @@
 		"type": "error"
 	},
 	{
-		"inputs": [],
-		"name": "resetContract",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bool",
-				"name": "_isContractRunning",
-				"type": "bool"
-			}
-		],
-		"name": "setIsContractRunning",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_organizationAddress",
-				"type": "address"
-			}
-		],
-		"name": "setOrg",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_playerAddress",
-				"type": "address"
-			}
-		],
-		"name": "setPlayer",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -140,6 +37,13 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "calculateSalary",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -202,6 +106,36 @@
 	},
 	{
 		"inputs": [],
+		"name": "fund",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_organizationAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_playerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_contractValue",
+				"type": "uint256"
+			}
+		],
+		"name": "initializeContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "isContractRunning",
 		"outputs": [
 			{
@@ -228,6 +162,13 @@
 	},
 	{
 		"inputs": [],
+		"name": "payBaseSalary",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "player",
 		"outputs": [
 			{
@@ -241,6 +182,13 @@
 	},
 	{
 		"inputs": [],
+		"name": "resetContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "salary",
 		"outputs": [
 			{
@@ -250,6 +198,58 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_contractValue",
+				"type": "uint256"
+			}
+		],
+		"name": "setContractValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_isContractRunning",
+				"type": "bool"
+			}
+		],
+		"name": "setIsContractRunning",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_organizationAddress",
+				"type": "address"
+			}
+		],
+		"name": "setOrg",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_playerAddress",
+				"type": "address"
+			}
+		],
+		"name": "setPlayer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]

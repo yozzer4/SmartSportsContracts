@@ -5,7 +5,9 @@ import { Link, useLocation } from "react-router-dom"
 import Web3 from 'web3';
 import bonusContractBasketballABI from '../../contracts/BonusContractBasketball.json'
 
-const contractAddress = '0x411700633a9D9800Cdb76D7a6592c96e23c50EB8'
+// hardcoded to deployed contract address
+const contractAddress = '0xfA5046e68DF1E25E8df578264346166b9e1e9262'
+// hardcoded to our Chainlink Functions subscription
 const subscriptionId = "1843";
 
 function BonusContractTerms() {
@@ -120,7 +122,7 @@ function BonusContractTerms() {
                         <Button variant='contained' onClick={handleClickConnect}>
                             Connect Wallet
                         </Button>
-                        
+
                         <Typography variant='p'>
                             Account Address: {account}
                         </Typography>

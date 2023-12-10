@@ -6,11 +6,6 @@ import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/Confir
 import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/dev/v1_0_0/libraries/FunctionsRequest.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-/**
- * @title GettingStartedFunctionsConsumer
- * @notice This is an example contract to show how to make HTTP requests using Chainlink
- * @dev This contract uses hardcoded values and should not be used in production.
- */
 contract BonusContractBasketball is FunctionsClient, ConfirmedOwner {
     using FunctionsRequest for FunctionsRequest.Request;
 
@@ -117,7 +112,7 @@ contract BonusContractBasketball is FunctionsClient, ConfirmedOwner {
     mapping(address => uint256) public addressToAmountFunded;
 
     /**
-     * @notice Initializes the contract with the Chainlink router address and sets the contract owner
+     * @notice Initializes the contract with the Chainlink router address and sets the contract owner, also initializes datafeed
      */
     constructor() FunctionsClient(router) ConfirmedOwner(msg.sender) {
         dataFeed = AggregatorV3Interface(

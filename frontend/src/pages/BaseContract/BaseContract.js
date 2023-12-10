@@ -6,8 +6,8 @@ import Web3 from 'web3';
 import baseContractABI from '../../contracts/BaseContract.json'
 /* global BigInt */
 
-// hardcoded to deployed contract
-const contractAddress = '0x80EF8F81C862a0377EFCFE6F08120933C2Bfa69b'
+// hardcoded to deployed contract address
+const contractAddress = '0xbaef1060BEf655c7E5a20198B6B462827f028462'
 
 function BaseContract() {
     const [open, setOpen] = useState(false);
