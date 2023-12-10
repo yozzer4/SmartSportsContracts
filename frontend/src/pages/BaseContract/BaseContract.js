@@ -1,18 +1,22 @@
 import './BaseContract.css';
 import React, {useState} from "react";
 import { Paper, Typography, Button, Stack, TextField, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Link } from "react-router-dom"
 import Web3 from 'web3';
 import baseContractABI from '../../contracts/BaseContract.json'
 /* global BigInt */
 
+// hardcoded to deployed contract
 const contractAddress = '0x80EF8F81C862a0377EFCFE6F08120933C2Bfa69b'
 
 function BaseContract() {
     const [open, setOpen] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [account, setAccount] = useState("");
-    const [recepientAddress, setRecepientAddress] = useState("");
+    const [recipientAddress, setRecipientAddress] = useState("");
     const [totalPayment, setTotalPayment] = useState("");
 
+    // handler for clicking the "Connect Wallet" button, gets wallet address
     const handleClickConnect = () => {
         async function loadAccounts() {
             const web3 = new Web3(window.ethereum);
@@ -27,34 +31,47 @@ function BaseContract() {
         }
     }
 
-    const handleRecepientAddressChange = (event) => {
-        setRecepientAddress(event.target.value);
+    // handler for inputting recipient address
+    const handleRecipientAddressChange = (event) => {
+        setRecipientAddress(event.target.value);
     }
 
+    // handler for inputting total payment
     const handleTotalPaymentChange = (event) => {
         setTotalPayment(event.target.value);
     }
 
+    // handler for clicking confirm button, opens confirmation modal
     const handleClickConfirm = () => {
         setOpen(true);
     }
 
+    // handler for clicking accept button in confirmation modal, initializes contract using the data inputted by user in the web form, then funds the contract from the user's account
     const handleClickAccept = () => {
         const web3 = new Web3(window.ethereum);
         const contract = new web3.eth.Contract(baseContractABI, contractAddress);
-        contract.methods.initializeContract(web3.utils.toChecksumAddress(account), web3.utils.toChecksumAddress(recepientAddress), totalPayment).send({from: account}).then(()=>{
+        contract.methods.initializeContract(web3.utils.toChecksumAddress(account), web3.utils.toChecksumAddress(recipientAddress), totalPayment).send({from: account}).then(()=>{
             contract.methods.salary().call().then((res) => {
-                contract.methods.fund().send({from: account, value: res * BigInt(24)})
+                contract.methods.fund().send({from: account, value: res * BigInt(24)}).then(() => {
+                    setSuccess(true);
+                })
             })
         });
 
         setOpen(false);
     }
     
+    // handler to close confirmation modal
     const handleClose = () => {
         setOpen(false);
     };
 
+    // handler to close success modal
+    const handleSuccessClose = (event, reason) => {
+        if (reason && reason === "backdropClick") 
+            return;
+        setSuccess(false);
+    }
 
     return (
         <div className="contract-container">
@@ -72,11 +89,13 @@ function BaseContract() {
                     <Typography variant='p'>
                         Account Address: {account}
                     </Typography>
-                    <TextField className='input-field' label='Recepient address' variant='outlined' helperText="Wallet address of the person you are signing a contract with" onChange={handleRecepientAddressChange}/>
+                    <TextField className='input-field' label='Recipient address' variant='outlined' helperText="Wallet address of the person you are signing a contract with" onChange={handleRecipientAddressChange}/>
                     <TextField className='input-field' label='Total payment' variant='outlined' helperText="Amount you agree to pay the person over a year in USD" onChange={handleTotalPaymentChange}/>
                     <Stack spacing={8} direction='row'>
-                        <Button>Back</Button>
-                        <Button variant='contained' onClick={handleClickConfirm}>Confirm</Button>
+                        <Link to="/contract">
+                            <Button>Back</Button>
+                        </Link>
+                        <Button variant='contained' onClick={handleClickConfirm} disabled={!account || !recipientAddress || !totalPayment}>Confirm</Button>
                     </Stack>
 
                     <Dialog
@@ -100,6 +119,26 @@ function BaseContract() {
                             <Button onClick={handleClickAccept} autoFocus>
                                 Accept
                             </Button>
+                        </DialogActions>
+                    </Dialog>
+
+                    <Dialog
+                        open={success}
+                        onClose={handleSuccessClose}
+                    >
+                        <DialogTitle>
+                            Success!
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                You've successfully initialized a contract with your player!
+                                Click the button below to return to the contract selection page.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Link to="/contract">
+                                <Button>Return</Button>
+                            </Link>
                         </DialogActions>
                     </Dialog>
                 </Stack>

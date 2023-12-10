@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { MetaMaskProvider } from '@metamask/sdk-react';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -12,15 +11,7 @@ import '@fontsource/roboto/700.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MetaMaskProvider debug={false} sdkOptions={{
-      checkInstallationImmediately: false,
-      dappMetadata: {
-        name: "Demo React App",
-        url: window.location.host,
-      }
-    }}>
       <App />
-    </MetaMaskProvider>
   </React.StrictMode>
 );
 

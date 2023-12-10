@@ -1,7 +1,7 @@
 import './ContractSelection.css';
-import React, {useState} from "react";
-import { Paper, Typography, Button, Fab, Stack, TextField } from '@mui/material';
-import { Link, Outlet } from "react-router-dom"
+import React from "react";
+import { Paper, Typography, Fab, Stack } from '@mui/material';
+import { Link } from "react-router-dom"
 
 function ContractSelection() {
     return (
@@ -11,15 +11,17 @@ function ContractSelection() {
                     <Typography variant='h5'>
                         Select a type of contract to create:
                     </Typography>
-                    <Link to="base">
+                    <Link className='button-link' to="base">
                         <Fab variant='extended'>
                             Base Contract
                         </Fab>
                     </Link>
-                    <Fab sx={{ width: '60%' }} variant='extended'>
-                        Bonus Contract
-                    </Fab>
-                    <Fab sx={{ width: '60%' }} variant='extended'>
+                    <Link className='button-link' to="bonus">
+                        <Fab variant='extended'>
+                            Bonus Contract
+                        </Fab>
+                    </Link>
+                    <Fab sx={{ width: '60%' }} variant='extended' disabled={true}>
                         Tournament Payout
                     </Fab>
                 </Stack>

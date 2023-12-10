@@ -25,6 +25,8 @@ contract BaseContract {
     // a boolean to show if the contract is initialized and running (currently paying out) or not
     bool public isContractRunning = false;
 
+    mapping(address => uint256) public addressToAmountFunded;
+
     // 
     AggregatorV3Interface internal dataFeed;
 
@@ -32,12 +34,6 @@ contract BaseContract {
     address internal dataFeedAddress = 0x694AA1769357215DE4FAC081bf1f309aDC325306;
 
     error LackOfFunds(uint transferAmount, uint currentBalance);
-    event SalaryPaid(address indexed player, uint256 amount);
-
-    modifier onlyOrganization() {
-        require(msg.sender == organization, "Only the organization can call this function");
-        _;
-    }
 
     constructor() {
         dataFeed = AggregatorV3Interface(
@@ -85,6 +81,9 @@ contract BaseContract {
 
     // function to initialize a contract, executed from UI once a contract is confirmed
     function initializeContract(address payable _organizationAddress, address payable _playerAddress, uint _contractValue) public {
+        // don't run this if a contract is already running, avoids overwriting already running contracts
+        require(!isContractRunning);
+        
         setOrg(_organizationAddress);
         setPlayer(_playerAddress);
         setContractValue(_contractValue);
@@ -106,7 +105,7 @@ contract BaseContract {
     function payBaseSalary() external {
         // only pay out when the contract is active
         require(isContractRunning);
-        
+
         // if the counter is >= 23, it means we are on the last pay period, so pay out whatever is left in the contract and reset
         if (counter >= 23) {
             player.transfer(address(this).balance);
@@ -119,11 +118,12 @@ contract BaseContract {
             player.transfer(salary);
             counter += 1;
         }
-
     }
     
-    // Fallback function to accept incoming Ether
-    receive() external payable {}
+    // function to fund contract
+    function fund() public payable {
+        addressToAmountFunded[msg.sender] += msg.value;
+    }
     
     // Check remaining balance of the contract
     function contractBalance() public view returns (uint256) {

@@ -6,6 +6,8 @@ import Home from "./pages/Home/Home"
 import About from "./pages/About/About"
 import ContractSelection from "./pages/ContractSelection/ContractSelection"
 import BaseContract from './pages/BaseContract/BaseContract';
+import BonusContract from './pages/BonusContract/BonusContract';
+import BonusContractTerms from './pages/BonusContractTerms/BonusContractTerms';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contract" element={<ContractSelection />} />
             <Route path="contract/base" element={<BaseContract />} />
+            <Route path="contract/bonus" element={<BonusContract />} />
+            <Route path="contract/bonus/terms" element={<BonusContractTerms />} />
           </Route>
         </Routes>
       </BrowserRouter>

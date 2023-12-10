@@ -1,0 +1,17 @@
+.contract-container {
+    margin-top: 10vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.contract-card {
+    display: inline-block;
+    width: 50%;
+    height: 80vh;
+    text-align: center;
+}
+
+.input-field {
+    width: 80%;
+}
