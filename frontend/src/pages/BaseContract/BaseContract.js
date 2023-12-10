@@ -7,7 +7,7 @@ import baseContractABI from '../../contracts/BaseContract.json'
 /* global BigInt */
 
 // hardcoded to deployed contract address
-const contractAddress = '0xbaef1060BEf655c7E5a20198B6B462827f028462'
+const contractAddress = '0xbD3Bb99008E80B90fA5B2Ed6eE07eB77F169dc32'
 
 function BaseContract() {
     const [open, setOpen] = useState(false);

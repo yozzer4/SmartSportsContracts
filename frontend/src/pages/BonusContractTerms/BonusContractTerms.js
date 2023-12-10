@@ -6,7 +6,7 @@ import Web3 from 'web3';
 import bonusContractBasketballABI from '../../contracts/BonusContractBasketball.json'
 
 // hardcoded to deployed contract address
-const contractAddress = '0xfA5046e68DF1E25E8df578264346166b9e1e9262'
+const contractAddress = '0x469c17971FaC5ac88bF984FB72507f5E695d60F9'
 // hardcoded to our Chainlink Functions subscription
 const subscriptionId = "1843";
 
